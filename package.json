@@ -1,0 +1,23 @@
+{
+  "name": "simple-nodejs-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js application with testing",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["nodejs", "express", "testing", "jest"],
+  "author": "Shreyas Bhagat",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}
