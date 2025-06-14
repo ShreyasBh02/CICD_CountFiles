@@ -1,12 +1,8 @@
 const request = require('supertest');
-const { app, server } = require('../app');
+const { app } = require('../app');
 
 describe('API Endpoints', () => {
-    // Gracefully close the server after tests
-    afterAll((done) => {
-        server.close(done);
-    });
-
+    
     describe('GET /', () => {
         test('should return welcome message and list of endpoints', async () => {
             const response = await request(app).get('/');
