@@ -59,15 +59,16 @@ app.use('*', (req, res) => {
     res.status(404).json({ error: 'Route not found' });
 });
 
-// Start server
-const server = app.listen(PORT, () => {
+
+// Only start server if run directly
+let server;
+if (require.main === module) {
+  server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-});
+  });
+}
+
+
 
 // Export for testing
 module.exports = { app, calculator, server };
-
-// Add after module.exports
-module.exports.closeServer = () => {
-    server.close();
-};
