@@ -30,8 +30,18 @@ jobs:
           name: coverage-report
           path: coverage/
 
-      - name: Install PM2
+      - name: Install PM2 globally
         run: npm install -g pm2
-
-      - name: "Deploy to aws"
-        run: pm2 restart server
+      
+      - name: Start or Restart app with PM2
+        run: |
+          if pm2 list | grep -q server; then
+            echo "Restarting existing PM2 process..."
+            pm2 restart server
+          else
+            echo "Starting new PM2 process..."
+            pm2 start app.js --name server
+          fi
+        
+      - name: Save PM2 process list for startup
+        run: pm2 save
